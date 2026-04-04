@@ -1,11 +1,16 @@
 # Getting Started
 Follow these steps to get the API up and running on your local machine.
 
-## Database Setup
+### Database Setup
 1. Ensure you have a PostgreSQL instance running. You can use a local installation or a containerized version via Docker.
 
 2. Configure Connection String
 Store your database credentials securely using .NET User Secrets. Run the following command in your terminal from the project root:
+
+3. Perform an initial database migration
+##### Bash
+        dotnet ef migrations add InitialCreate
+        dotnet ef database update
 
 ##### Bash
         dotnet user-secrets init
