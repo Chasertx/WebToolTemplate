@@ -7,14 +7,14 @@ Follow these steps to get the API up and running on your local machine.
 2. Configure Connection String
 Store your database credentials securely using .NET User Secrets. Run the following command in your terminal from the project root:
 
+##### Bash
+        dotnet user-secrets init
+        dotnet user-secrets set "ConnectionStrings:DefaultConnection" "YourConnectionString"
+        
 3. Perform an initial database migration
 ##### Bash
         dotnet ef migrations add InitialCreate
         dotnet ef database update
-
-##### Bash
-        dotnet user-secrets init
-        dotnet user-secrets set "ConnectionStrings:DefaultConnection" "YourConnectionString"
 
 ### Build the Application:
 
