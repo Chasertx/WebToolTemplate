@@ -5,11 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Template.Api.Brokers.Foundation.Storages;
+using Template.Api.Services.Foundations.Organizations;
 
 //Initializing the web application builder.
 var builder = WebApplication.CreateBuilder(args);
 
-//Registering DB context with PGSQL configuration.
+//Registering DB context with PGSQL configuration for now.
+//Setup a PGSQL docker image, get the connection string, and put it in user secrets.
 builder.Services.AddDbContext<StorageBroker>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -18,10 +20,25 @@ builder.Services.AddControllers();
 //Registering api explorer for documentation.
 builder.Services.AddEndpointsApiExplorer();
 //Register OpenApi generation.
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options =>
+{
+    options.AddDocumentTransformer((document, context, cancellationToken) =>
+    {
+        var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+        if (File.Exists(xmlPath))
+        {
+
+        }
+
+        return Task.CompletedTask;
+    });
+});
 
 //Mapping storage interface to implementation.
 builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+builder.Services.AddTransient<IOrganizationService, OrganizationService>();
 
 //Initializing JWT Authentication service.
 builder.Services.AddAuthentication("Bearer")

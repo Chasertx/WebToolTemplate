@@ -13,5 +13,6 @@ namespace Template.Api.Models.Foundation.User
         public string Role { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool IsActive { get; set; }
+        public string PasswordHash { get; set; }
     }
 }

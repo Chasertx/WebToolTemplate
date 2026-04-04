@@ -11,11 +11,16 @@ namespace Template.Api.Brokers.Foundation.Storages
     functionalities found in StorageBroker.cs **/
     internal partial class StorageBroker : DbContext, IStorageBroker
     {
+        // Defines the database set for Organization entities.
         public DbSet<Organization> Organizations { get; set; }
 
+        // Retrieves all organizations by calling the 
+        // generic SelectAll method.
         public IQueryable<Organization> SelectAllOrganizations() =>
             SelectAll<Organization>();
 
+        // Inserts a new organization record asynchronously
+        // using the generic InsertAsync method.
         public async ValueTask<Organization> InsertOrganizationAsync(Organization org) =>
             await InsertAsync(org);
     }
