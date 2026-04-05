@@ -2,19 +2,27 @@ using Template.Api.Models.Foundation.Organization;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
+using Template.Api.Brokers.Logging;
 
 namespace Template.Api.Services.Foundations.Organizations;
 
 public partial class OrganizationService : IOrganizationService
 {
     private readonly IStorageBroker storageBroker;
+    private readonly ILoggingBroker loggingBroker;
 
     /// <summary>
     /// Injecting and setting the storage broker.
     /// </summary>
     /// <param name="storageBroker"></param>
-    public OrganizationService(IStorageBroker storageBroker) =>
+    /// /// <param name="loggingBroker"></param>
+    public OrganizationService(
+        IStorageBroker storageBroker,
+        ILoggingBroker loggingBroker)
+    {
         this.storageBroker = storageBroker;
+        this.loggingBroker = loggingBroker;
+    }
 
     /// <summary>
     /// Calls the broker service to persist a

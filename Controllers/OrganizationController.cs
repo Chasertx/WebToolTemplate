@@ -21,13 +21,13 @@ public class OrganizationsController : ControllerBase
     /// POST api/organizations inserts a new organization
     /// record into the database using the broker.
     /// </summary>
-    /// <param name="org"></param>
+    /// <param name="organization"></param>
     /// <returns></returns>
     [HttpPost]
-    public async ValueTask<ActionResult<Organization>> PostOrganizationAsync(Organization org)
+    public async ValueTask<ActionResult<Organization>> PostOrganizationAsync([FromBody] Organization organization)
     {
         Organization addedOrganization =
-            await this.organizationService.AddOrganizationAsync(org);
+            await this.organizationService.AddOrganizationAsync(organization);
 
         return CreatedAtAction(nameof(GetOrganizationById), new { id = addedOrganization.Id }, addedOrganization);
     }

@@ -16,6 +16,11 @@
                 All functions should delegate to generic 
                 functionalities found in StorageBroker.cs *
         </member>
+        <member name="T:Template.Api.Brokers.Logging.ILoggingBroker">
+            <summary>
+            LoggingBroker interface.
+            </summary>
+        </member>
         <member name="T:Template.Api.Migrations.InitialCreate">
             <inheritdoc />
         </member>
@@ -52,11 +57,12 @@
         <member name="M:Template.Api.Migrations.AddStatusToOrg.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Template.Api.Services.Foundations.Organizations.OrganizationService.#ctor(IStorageBroker)">
+        <member name="M:Template.Api.Services.Foundations.Organizations.OrganizationService.#ctor(IStorageBroker,Template.Api.Brokers.Logging.ILoggingBroker)">
             <summary>
             Injecting and setting the storage broker.
             </summary>
             <param name="storageBroker"></param>
+            /// <param name="loggingBroker"></param>
         </member>
         <member name="M:Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Template.Api.Models.Foundation.Organization.Organization)">
             <summary>
@@ -94,7 +100,7 @@
             POST api/organizations inserts a new organization
             record into the database using the broker.
             </summary>
-            <param name="org"></param>
+            <param name="organization"></param>
             <returns></returns>
         </member>
         <member name="M:OrganizationsController.GetAllOrganizations">
