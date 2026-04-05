@@ -1,0 +1,32 @@
+2026-04-05 08:25:47.862 -05:00 [INF] Serilog is now targeting the console!
+2026-04-05 08:25:48.449 -05:00 [INF] Checking DB Connectivity...
+2026-04-05 08:26:12.318 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-05 08:26:12.752 -05:00 [INF] Successfully persisted organization: string at "2026-04-05T13:26:12.7520960+00:00"
+2026-04-05 08:26:12.804 -05:00 [INF] HTTP POST /api/Organizations responded 201 in 487.3441 ms
+2026-04-05 08:26:43.141 -05:00 [INF] HTTP GET /api/Organizations responded 200 in 304.0492 ms
+2026-04-05 08:27:16.854 -05:00 [INF] HTTP GET /api/Organizations/3fa85f64-5717-4562-b3fc-2c963f66af67 responded 200 in 14.1959 ms
+2026-04-05 09:56:15.354 -05:00 [INF] Serilog is now targeting the console!
+2026-04-05 09:56:16.168 -05:00 [INF] Checking DB Connectivity...
+2026-04-05 09:56:23.601 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 61.0019 ms
+2026-04-05 09:56:23.683 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 26.8758 ms
+2026-04-05 09:56:23.683 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 30.8698 ms
+2026-04-05 09:56:23.683 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 31.1667 ms
+2026-04-05 09:56:23.687 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 30.6071 ms
+2026-04-05 09:56:23.687 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.4299 ms
+2026-04-05 09:56:24.004 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-05 09:56:24.021 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.6288 ms
+2026-04-05 09:56:24.362 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 363.1270 ms
+2026-04-05 09:56:41.059 -05:00 [INF] Successfully persisted organization: string at "2026-04-05T14:56:41.0592609+00:00"
+2026-04-05 09:56:41.090 -05:00 [INF] HTTP POST /api/Organizations responded 201 in 359.0006 ms
+2026-04-05 09:59:02.729 -05:00 [INF] Serilog is now targeting the console!
+2026-04-05 09:59:02.894 -05:00 [INF] Checking DB Connectivity...
+2026-04-05 09:59:17.531 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-05 09:59:17.656 -05:00 [INF] Successfully validated organization: string at "2026-04-05T14:59:17.6562854+00:00"
+2026-04-05 09:59:17.893 -05:00 [INF] Successfully persisted organization: string at "2026-04-05T14:59:17.8937895+00:00"
+2026-04-05 09:59:17.942 -05:00 [INF] HTTP POST /api/Organizations responded 201 in 416.9214 ms
+2026-04-05 10:28:24.840 -05:00 [INF] Serilog is now targeting the console!
+2026-04-05 10:28:25.629 -05:00 [INF] Checking DB Connectivity...
+2026-04-05 10:28:36.340 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-05 10:28:36.558 -05:00 [INF] Successfully validated organization: string at "2026-04-05T15:28:36.5579670+00:00"
+2026-04-05 10:28:36.991 -05:00 [INF] Successfully persisted organization: string at "2026-04-05T15:28:36.9911769+00:00"
+2026-04-05 10:28:37.046 -05:00 [INF] HTTP POST /api/Organizations responded 201 in 711.8900 ms
