@@ -40,6 +40,18 @@
         <member name="M:Template.Api.Migrations.addingPasswordHash.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Template.Api.Migrations.AddStatusToOrg">
+            <inheritdoc />
+        </member>
+        <member name="M:Template.Api.Migrations.AddStatusToOrg.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Template.Api.Migrations.AddStatusToOrg.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Template.Api.Migrations.AddStatusToOrg.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="M:Template.Api.Services.Foundations.Organizations.OrganizationService.#ctor(IStorageBroker)">
             <summary>
             Injecting and setting the storage broker.
@@ -54,6 +66,14 @@
             <param name="org"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Template.Api.Services.Foundations.Organizations.OrganizationService.RetrieveOrganizationByIdAsync(System.Guid)">
+            <summary>
+            Retrieves a specific organization according
+            to it's organizationId.
+            </summary>
+            <param name="orgId"></param>
+            <returns></returns>
         </member>
         <member name="M:Template.Api.Services.Foundations.Organizations.OrganizationService.RetrieveAllOrganizations">
             <summary>

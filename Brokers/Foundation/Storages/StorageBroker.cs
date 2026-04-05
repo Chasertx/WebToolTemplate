@@ -24,6 +24,7 @@ namespace Template.Api.Brokers.Foundation.Storages
         //Generic implementation inserting an entity into the DB.
         private async ValueTask<T> InsertAsync<T>(T @object)
         {
+            if (@object is null) return default!;
             // Manually sets the entity state to Added for tracking.
             Entry(@object).State = EntityState.Added;
             // Persists the changes to the database async.
