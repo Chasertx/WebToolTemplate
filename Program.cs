@@ -6,12 +6,22 @@ using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Template.Api.Brokers.Foundation.Storages;
 using Template.Api.Services.Foundations.Organizations;
+using Serilog;
+using Template.Api.Brokers.Logging;
 
 //Initializing the web application builder.
 var builder = WebApplication.CreateBuilder(args);
 
+//Telling the host to use serilog.
+//This logging configuration has been delegated to
+//Appsettings.json
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
+//Mapping logger interface to it's implementation.
+builder.Services.AddTransient<ILoggingBroker, LoggingBroker>();
+
 //Registering DB context with PGSQL configuration for now.
-//Setup a PGSQL docker image, get the connection string, and put it in user secrets.
 builder.Services.AddDbContext<StorageBroker>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -65,6 +75,9 @@ builder.Services.AddAuthorization(options =>
 //Constructing instance of the application.
 var app = builder.Build();
 
+//Enabling logging across all requests.
+app.UseSerilogRequestLogging();
+app.Logger.LogInformation("Serilog is now targeting the console!");
 //Development specific middleware.
 if (app.Environment.IsDevelopment())
 {

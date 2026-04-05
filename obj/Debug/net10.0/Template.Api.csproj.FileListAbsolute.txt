@@ -1,4 +1,3 @@
-C:\DEV\Templates\Template.Api\bin\Debug\net10.0\appsettings.Development.json
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\appsettings.json
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Template.Api.staticwebassets.endpoints.json
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Template.Api.exe
@@ -22,7 +21,6 @@ C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Ab
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
-C:\DEV\Templates\Template.Api\bin\Debug\net10.0\microsoft.identitymodel.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
@@ -35,6 +33,15 @@ C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Mono.TextTemplating.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Newtonsoft.Json.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Npgsql.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.AspNetCore.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.Extensions.Hosting.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.Extensions.Logging.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.Formatting.Compact.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.Settings.Configuration.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.Sinks.Console.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.Sinks.Debug.dll
+C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Serilog.Sinks.File.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\System.CodeDom.dll
 C:\DEV\Templates\Template.Api\bin\Debug\net10.0\System.Composition.AttributedModel.dll
