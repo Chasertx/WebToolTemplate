@@ -6,6 +6,10 @@ using Template.Api.Brokers.Logging;
 
 namespace Template.Api.Services.Foundations.Organizations;
 
+/// <summary>
+/// This is the "Brain" of organization operations, it 
+/// handles the sequence of the events.
+/// </summary>
 public partial class OrganizationService : IOrganizationService
 {
     private readonly IStorageBroker storageBroker;
@@ -36,6 +40,8 @@ public partial class OrganizationService : IOrganizationService
         // Await the TryCatch and then tell the compiler the result won't be null
         return (await TryCatch(async () =>
         {
+            ValidateOrganizationOnAdd(org);
+
             return await this.storageBroker.InsertOrganizationAsync(org);
         }))!;
     }
