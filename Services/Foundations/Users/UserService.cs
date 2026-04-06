@@ -52,10 +52,7 @@ public partial class UserService : IUserService
     public ValueTask<User?> RetrieveUserByIdAsync(Guid userId) =>
     TryCatch(async () =>
     {
-        IQueryable<User?> users =
-            this.storageBroker.SelectAllUsers();
-
-        return await users.FirstOrDefaultAsync(user => user!.Id == userId);
+        return await this.storageBroker.SelectUserByIdAsync(userId);
     });
 
     /// <summary>

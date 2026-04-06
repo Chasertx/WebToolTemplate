@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Template.Api.Models.Foundation.Organization;
+using Template.Api.Models.Foundation.Organization.Exceptions;
 using Template.Api.Services.Foundations.Organizations;
 
 [ApiController]
@@ -26,10 +27,17 @@ public class OrganizationsController : ControllerBase
     [HttpPost]
     public async ValueTask<ActionResult<Organization>> PostOrganizationAsync([FromBody] Organization organization)
     {
-        Organization addedOrganization =
-            await this.organizationService.AddOrganizationAsync(organization);
+        try
+        {
+            Organization addedOrganization =
+                await this.organizationService.AddOrganizationAsync(organization);
 
-        return CreatedAtAction(nameof(GetOrganizationById), new { id = addedOrganization.Id }, addedOrganization);
+            return CreatedAtAction(nameof(GetOrganizationById), new { id = addedOrganization.Id }, addedOrganization);
+        }
+        catch (OrganizationValidationException organizationValidationException)
+        {
+            return Conflict(organizationValidationException.Message);
+        }
     }
 
     /// <summary>
