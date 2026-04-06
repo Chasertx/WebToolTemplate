@@ -20,7 +20,7 @@ namespace Template.Api.Brokers.Foundation.Storages
         public async ValueTask<User?> SelectUserByIdAsync(Guid userId) =>
             await Users.FindAsync(userId);
 
-        public async ValueTask<User> InsertUserAsync(User book) =>
-            await InsertAsync(book);
+        public async ValueTask<User> InsertUserAsync(User user) =>
+            await InsertAsync(user);
     }
 }
