@@ -7,8 +7,35 @@ A .NET 10 Web API template using PostgreSQL, Entity Framework Core, and JWT auth
 - **.NET 10** (ASP.NET Core Web API)
 - **PostgreSQL 16** via Npgsql + EF Core
 - **JWT Bearer Authentication** with role-based authorization (`AdminOnly`, `UserOnly`)
+- **Serilog** for structured logging (console + rolling file)
 - **Swagger UI** (development only, available at `/swagger`)
 - **OpenAPI** spec at `/openapi/v1.json`
+
+## Project Structure
+
+```
+Template.Api/                        ← Main API project
+├── Program.cs                       ← App entry point, DI, middleware
+├── appsettings.json                 ← Configuration (DB, Serilog, etc.)
+├── Controllers/                     ← Thin HTTP layer (routes → services)
+├── Services/Foundations/             ← Business logic, validation, exception handling
+│   ├── Users/
+│   │   ├── UserService.cs           ← Core operations
+│   │   ├── UserService.Validation.cs← Validation rules
+│   │   └── UserService.Exceptions.cs← TryCatch wrappers
+│   └── Organizations/               ← Same pattern
+├── Brokers/
+│   ├── Foundation/Storages/         ← EF Core data access (no business logic)
+│   └── Logging/                     ← Logging abstraction
+├── Models/Foundation/               ← Entity classes + custom exceptions
+└── Migrations/                      ← EF Core migrations
+
+Template.Api.Tests.Unit/             ← Unit test project
+└── Services/Foundations/Users/       ← Tests mirror the service structure
+    ├── UserServiceTests.cs           ← Setup + mocks
+    ├── UserServiceTests.Add.cs       ← AddUserAsync tests
+    └── UserServiceTests.RetrieveAll.cs← RetrieveAllUsers tests
+```
 
 ## Prerequisites
 
@@ -17,9 +44,17 @@ A .NET 10 Web API template using PostgreSQL, Entity Framework Core, and JWT auth
 
 ## Getting Started
 
-Follow these steps to get the API up and running on your local machine.
+### 1. Clone and Restore
 
-### 1. Database Setup
+```bash
+git clone <repo-url>
+cd WebToolTemplate
+dotnet restore
+```
+
+All NuGet packages for both the API and test projects are restored automatically.
+
+### 2. Database Setup
 
 Start a PostgreSQL instance using Docker:
 
@@ -32,55 +67,52 @@ docker run --name webtool-pg \
   -d postgres:16
 ```
 
-### 2. Configure Connection String
+### 3. Configure Connection String
 
-Store your database credentials securely using .NET User Secrets. Run the following commands from the project root:
+The default connection string in `appsettings.json` matches the Docker command above. For custom credentials, use .NET User Secrets:
 
 ```bash
-dotnet user-secrets init
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Host=localhost;Port=5432;Database=webtool;Username=postgres;Password=postgres"
 ```
 
-### 3. Run Database Migrations
-
-```bash
-dotnet ef migrations add InitialCreate
-dotnet ef database update
-```
-
-### 4. Build the Application
-
-```bash
-dotnet build
-```
-
-### 5. Run the API
+### 4. Run the API
 
 ```bash
 dotnet run
 ```
 
-The API will be available at:
+The app automatically applies pending EF Core migrations on startup. No manual `dotnet ef database update` is needed.
 
-- **HTTP:** http://localhost:5025
-- **HTTPS:** https://localhost:7065
+- **Swagger UI**: http://localhost:5025/swagger/index.html
+- **OpenAPI spec**: http://localhost:5025/openapi/v1.json
 
-### 6. Explore the API
+## Running Tests
 
-Once the application is running, navigate to the Swagger UI to view the documentation and test the available endpoints:
+Unit tests use **xUnit**, **Moq** (mocking), and **FluentAssertions**. They test the service layer in isolation — no database required.
 
-http://localhost:5025/swagger
+```bash
+# Run all unit tests
+dotnet test Template.Api.Tests.Unit
 
-## Project Structure
+# Run with detailed output
+dotnet test Template.Api.Tests.Unit --verbosity normal
 
+# Run a specific test by name
+dotnet test Template.Api.Tests.Unit --filter "ShouldAddUserAsync"
+
+# Run all tests matching a keyword
+dotnet test Template.Api.Tests.Unit --filter "Add"
 ```
-├── Program.cs                    # App entry point and middleware configuration
-├── Models/Foundation/            # Domain models (User, Organization)
-├── Brokers/Foundation/Storages/  # EF Core DbContext and storage interfaces
-├── Brokers/Logging/              # Serilog logging broker
-├── Controllers/                  # API controllers
-├── Services/Foundations/         # Business logic services
-├── Migrations/                   # EF Core migrations
-├── Properties/                   # Launch profiles
-└── appsettings.json              # Configuration (connection strings, logging)
-```
+
+Tests also appear in VS Code's **Testing** sidebar for clickable run/debug.
+
+## Architecture
+
+Request flow: **HTTP → Controller → Service → Broker → Database**
+
+| Layer          | Responsibility                                                                                                          | Example                        |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **Controller** | Receives HTTP requests, returns responses. No logic.                                                                    | `UsersController`              |
+| **Service**    | Validates input, orchestrates operations, handles exceptions. Split into partial classes: core, validation, exceptions. | `UserService`                  |
+| **Broker**     | Raw data access via EF Core. Delegates to generic `InsertAsync<T>` / `SelectAll<T>`. No business logic.                 | `StorageBroker`                |
+| **Model**      | Entity definitions + custom exception classes.                                                                          | `User`, `InvalidUserException` |
