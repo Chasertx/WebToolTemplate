@@ -44,6 +44,7 @@ public partial class OrganizationService : IOrganizationService
             // they are persisted to the database.
             ValidateOrganizationOnAdd(org);
             await ValidateOrganizationDoesNotAlreadyExistAsync(org);
+
             return await this.storageBroker.InsertOrganizationAsync(org);
         }))!;
     }
