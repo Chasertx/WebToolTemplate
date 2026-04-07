@@ -63,6 +63,17 @@ public partial class UserService : IUserService
     });
 
     /// <summary>
+    /// Retrieves a specific user by email address.
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns></returns>
+    public ValueTask<User?> RetrieveUserByEmailAsync(string email) =>
+    TryCatch(async () =>
+    {
+        return await this.storageBroker.SelectUserByEmailAsync(email);
+    });
+
+    /// <summary>
     /// Retrieves all users.
     /// </summary>
     /// <returns></returns>
