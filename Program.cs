@@ -1,6 +1,8 @@
 using System.Text;
+using System.IO.Compression;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
@@ -77,6 +79,24 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
 });
 
+//Registering response compression with Brotli and Gzip.
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+//Brotli already compresses better than Gzip, so Fastest
+//still yields good compression with minimal CPU cost.
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+    options.Level = CompressionLevel.Fastest);
+
+//Gzip is a fallback for older clients that don't support
+//Brotli, so we prioritize max compression here.
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+    options.Level = CompressionLevel.SmallestSize);
+
 //Constructing instance of the application.
 var app = builder.Build();
 
@@ -101,6 +121,8 @@ using (var scope = app.Services.CreateScope())
     app.Logger.LogInformation("Checking DB Connectivity...");
     broker?.Database.Migrate();
 }
+//Compresses response bodies using Brotli/Gzip.
+app.UseResponseCompression();
 //Redirects requests to https.
 app.UseHttpsRedirection();
 //Enabling identity identification middleware.
