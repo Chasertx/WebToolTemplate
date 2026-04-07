@@ -6,6 +6,7 @@ using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Template.Api.Brokers.Foundation.Storages;
 using Template.Api.Services.Foundations.Organizations;
+using Template.Api.Services.Foundations.Users;
 using Serilog;
 using Template.Api.Brokers.Logging;
 
@@ -49,6 +50,7 @@ builder.Services.AddOpenApi(options =>
 //Mapping storage interface to implementation.
 builder.Services.AddTransient<IStorageBroker, StorageBroker>();
 builder.Services.AddTransient<IOrganizationService, OrganizationService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 //Initializing JWT Authentication service.
 builder.Services.AddAuthentication("Bearer")

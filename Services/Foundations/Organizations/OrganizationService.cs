@@ -40,7 +40,10 @@ public partial class OrganizationService : IOrganizationService
         // Await the TryCatch and then tell the compiler the result won't be null
         return (await TryCatch(async () =>
         {
+            // All data should be validated before
+            // they are persisted to the database.
             ValidateOrganizationOnAdd(org);
+            await ValidateOrganizationDoesNotAlreadyExistAsync(org);
 
             return await this.storageBroker.InsertOrganizationAsync(org);
         }))!;
@@ -55,11 +58,7 @@ public partial class OrganizationService : IOrganizationService
     public ValueTask<Organization?> RetrieveOrganizationByIdAsync(Guid orgId) =>
     TryCatch(async () =>
     {
-        IQueryable<Organization?> organizations =
-            this.storageBroker.SelectAllOrganizations();
-
-        // Filters the query for the specific ID
-        return await organizations.FirstOrDefaultAsync(org => org!.Id == orgId);
+        return await this.storageBroker.SelectOrganizationByIdAsync(orgId);
     });
 
     /// <summary>
