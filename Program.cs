@@ -49,7 +49,7 @@ builder.Services.AddOpenApi(options =>
 });
 
 //Mapping storage interface to implementation.
-builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+builder.Services.AddScoped<IStorageBroker, StorageBroker>();
 builder.Services.AddTransient<IOrganizationService, OrganizationService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ISecurityBroker, SecurityBroker>();
