@@ -9,6 +9,7 @@ using Template.Api.Services.Foundations.Organizations;
 using Template.Api.Services.Foundations.Users;
 using Serilog;
 using Template.Api.Brokers.Logging;
+using Template.Api.Brokers.Security;
 
 //Initializing the web application builder.
 var builder = WebApplication.CreateBuilder(args);
@@ -51,6 +52,7 @@ builder.Services.AddOpenApi(options =>
 builder.Services.AddTransient<IStorageBroker, StorageBroker>();
 builder.Services.AddTransient<IOrganizationService, OrganizationService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ISecurityBroker, SecurityBroker>();
 
 //Initializing JWT Authentication service.
 builder.Services.AddAuthentication("Bearer")
