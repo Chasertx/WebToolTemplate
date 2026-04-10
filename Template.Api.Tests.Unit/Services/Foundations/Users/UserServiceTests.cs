@@ -1,5 +1,6 @@
 using Moq;
 using Template.Api.Brokers.Logging;
+using Template.Api.Brokers.Security;
 using Template.Api.Models.Foundation.User;
 using Template.Api.Services.Foundations.Users;
 
@@ -14,16 +15,19 @@ public partial class UserServiceTests
 {
     private readonly Mock<IStorageBroker> storageBrokerMock;
     private readonly Mock<ILoggingBroker> loggingBrokerMock;
+    private readonly Mock<ISecurityBroker> securityBrokerMock;
     private readonly IUserService userService;
 
     public UserServiceTests()
     {
         this.storageBrokerMock = new Mock<IStorageBroker>();
         this.loggingBrokerMock = new Mock<ILoggingBroker>();
+        this.securityBrokerMock = new Mock<ISecurityBroker>();
 
         this.userService = new UserService(
             storageBroker: this.storageBrokerMock.Object,
-            loggingBroker: this.loggingBrokerMock.Object);
+            loggingBroker: this.loggingBrokerMock.Object,
+            securityBroker: this.securityBrokerMock.Object);
     }
 
     // Helper to create a valid user with all required fields populated.
