@@ -23,5 +23,10 @@ namespace Template.Api.Brokers.Foundation.Storages
         // using the generic InsertAsync method.
         public async ValueTask<Organization> InsertOrganizationAsync(Organization org) =>
             await InsertAsync(org);
+
+        public async ValueTask<Organization?> SelectOrganizationByIdAsync(Guid orgId)
+        {
+            return await Organizations.FindAsync(orgId);
+        }
     }
 }

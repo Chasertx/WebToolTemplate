@@ -1,0 +1,602 @@
+2026-04-06 14:30:37.734 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 14:30:38.389 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 14:31:26.640 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 57.7835 ms
+2026-04-06 14:31:26.693 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 1.1391 ms
+2026-04-06 14:31:26.710 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 21.7311 ms
+2026-04-06 14:31:26.714 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 25.2336 ms
+2026-04-06 14:31:26.714 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 22.3499 ms
+2026-04-06 14:31:26.717 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 27.3690 ms
+2026-04-06 14:31:27.029 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 14:31:27.274 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 248.6993 ms
+2026-04-06 14:31:58.930 -05:00 [INF] Successfully validated user: string at "2026-04-06T19:31:58.9301674+00:00"
+2026-04-06 14:31:59.665 -05:00 [INF] Successfully persisted user: string at "2026-04-06T19:31:59.6658281+00:00"
+2026-04-06 14:31:59.693 -05:00 [INF] HTTP POST /api/Users responded 201 in 881.8882 ms
+2026-04-06 14:33:34.330 -05:00 [INF] Successfully validated user: string at "2026-04-06T19:33:34.3307652+00:00"
+2026-04-06 14:33:34.440 -05:00 [ERR] User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+Template.Api.Models.Foundation.User.Exceptions.AlreadyExistsUserException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Users.UserService.ValidateUserDoesNotAlreadyExistAsync(User user) in C:\DEV\Templates\Template.Api\Services\Foundations\Users\UserService.Validation.cs:line 40
+   at Template.Api.Services.Foundations.Users.UserService.<>c__DisplayClass3_0.<<AddUserAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Users\UserService.cs:line 40
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Users.UserService.TryCatch(ReturningUserFunction returningUserFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Users\UserService.Exceptions.cs:line 19
+2026-04-06 14:33:34.485 -05:00 [INF] HTTP POST /api/Users responded 409 in 166.3376 ms
+2026-04-06 14:34:42.260 -05:00 [INF] HTTP GET /api/Users responded 200 in 23.8236 ms
+2026-04-06 14:34:46.712 -05:00 [INF] HTTP GET /api/Users responded 200 in 5.3699 ms
+2026-04-06 14:35:03.043 -05:00 [INF] HTTP GET /api/Users/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 200 in 4.4975 ms
+2026-04-06 14:35:18.458 -05:00 [ERR] Failed executing DbCommand (12ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Organizations" ("Id", "Name", "Status")
+VALUES (@p0, @p1, @p2);
+2026-04-06 14:35:18.494 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Template.Api.Brokers.Foundation.Storages.StorageBroker'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_Organizations"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "PK_Organizations"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Organizations
+    ConstraintName: PK_Organizations
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_Organizations"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "PK_Organizations"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Organizations
+    ConstraintName: PK_Organizations
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-04-06 14:35:18.551 -05:00 [ERR] An error occurred while saving the entity changes. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_Organizations"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "PK_Organizations"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Organizations
+    ConstraintName: PK_Organizations
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Template.Api.Brokers.Foundation.Storages.StorageBroker.InsertAsync[T](T object) in C:\DEV\Templates\Template.Api\Brokers\Foundation\Storages\StorageBroker.cs:line 31
+   at Template.Api.Brokers.Foundation.Storages.StorageBroker.InsertOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Brokers\Foundation\Storages\StorageBroker.Organization.cs:line 25
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 45
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+2026-04-06 14:35:18.600 -05:00 [ERR] HTTP POST /api/Organizations responded 500 in 205.9330 ms
+System.Exception: Database error occurred.
+ ---> Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_Organizations"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "PK_Organizations"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Organizations
+    ConstraintName: PK_Organizations
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Template.Api.Brokers.Foundation.Storages.StorageBroker.InsertAsync[T](T object) in C:\DEV\Templates\Template.Api\Brokers\Foundation\Storages\StorageBroker.cs:line 31
+   at Template.Api.Brokers.Foundation.Storages.StorageBroker.InsertOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Brokers\Foundation\Storages\StorageBroker.Organization.cs:line 25
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 45
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 29
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method134(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-06 14:35:18.636 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: Database error occurred.
+ ---> Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "PK_Organizations"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "PK_Organizations"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Organizations
+    ConstraintName: PK_Organizations
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Template.Api.Brokers.Foundation.Storages.StorageBroker.InsertAsync[T](T object) in C:\DEV\Templates\Template.Api\Brokers\Foundation\Storages\StorageBroker.cs:line 31
+   at Template.Api.Brokers.Foundation.Storages.StorageBroker.InsertOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Brokers\Foundation\Storages\StorageBroker.Organization.cs:line 25
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 45
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 29
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method134(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-06 14:57:52.765 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 14:57:53.458 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 15:04:24.984 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 80.7908 ms
+2026-04-06 15:04:25.060 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.7107 ms
+2026-04-06 15:04:25.115 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 55.0029 ms
+2026-04-06 15:04:25.115 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 54.9940 ms
+2026-04-06 15:04:25.115 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 55.2157 ms
+2026-04-06 15:04:25.129 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 69.5474 ms
+2026-04-06 15:04:25.961 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 15:04:26.063 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.5489 ms
+2026-04-06 15:04:26.258 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 304.3546 ms
+2026-04-06 15:04:30.900 -05:00 [INF] Successfully persisted organization: string at "2026-04-06T20:04:30.9004145+00:00"
+2026-04-06 15:04:30.905 -05:00 [ERR] Organization validation error occurred, fix the error and try again.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+2026-04-06 15:04:30.943 -05:00 [ERR] HTTP POST /api/Organizations responded 500 in 698.3345 ms
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 41
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-06 15:04:30.974 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 41
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-06 15:06:33.699 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 15:06:34.597 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 15:06:38.606 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 60.1734 ms
+2026-04-06 15:06:38.659 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 19.5339 ms
+2026-04-06 15:06:38.659 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 19.5268 ms
+2026-04-06 15:06:38.660 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 20.3959 ms
+2026-04-06 15:06:38.667 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.3335 ms
+2026-04-06 15:06:38.673 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 34.0663 ms
+2026-04-06 15:06:38.858 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.4772 ms
+2026-04-06 15:06:38.866 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 15:06:39.114 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 263.7711 ms
+2026-04-06 15:06:44.500 -05:00 [INF] Successfully persisted organization: string at "2026-04-06T20:06:44.5000023+00:00"
+2026-04-06 15:06:44.503 -05:00 [ERR] Organization validation error occurred, fix the error and try again.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+2026-04-06 15:06:44.535 -05:00 [ERR] HTTP POST /api/Organizations responded 500 in 636.3952 ms
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 33
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-06 15:06:44.554 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 33
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-06 15:08:49.926 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 15:08:50.108 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 15:08:55.954 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 61.0898 ms
+2026-04-06 15:08:56.038 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 16.9298 ms
+2026-04-06 15:08:56.038 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 16.9476 ms
+2026-04-06 15:08:56.038 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 16.9471 ms
+2026-04-06 15:08:56.038 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 17.0906 ms
+2026-04-06 15:08:56.043 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.3898 ms
+2026-04-06 15:08:56.359 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.2549 ms
+2026-04-06 15:08:56.363 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 15:08:56.581 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 248.1905 ms
+2026-04-06 15:09:02.499 -05:00 [INF] Successfully persisted organization: string at "2026-04-06T20:09:02.4992433+00:00"
+2026-04-06 15:09:02.502 -05:00 [ERR] Organization validation error occurred, fix the error and try again.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+2026-04-06 15:09:02.523 -05:00 [ERR] HTTP POST /api/Organizations responded 500 in 634.7795 ms
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 33
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-06 15:09:02.542 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 33
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-06 15:09:23.484 -05:00 [INF] Successfully validated user: string at "2026-04-06T20:09:23.4844595+00:00"
+2026-04-06 15:09:23.653 -05:00 [ERR] User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+Template.Api.Models.Foundation.User.Exceptions.AlreadyExistsUserException: User with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Users.UserService.ValidateUserDoesNotAlreadyExistAsync(User user) in C:\DEV\Templates\Template.Api\Services\Foundations\Users\UserService.Validation.cs:line 40
+   at Template.Api.Services.Foundations.Users.UserService.<>c__DisplayClass3_0.<<AddUserAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Users\UserService.cs:line 40
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Users.UserService.TryCatch(ReturningUserFunction returningUserFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Users\UserService.Exceptions.cs:line 19
+2026-04-06 15:09:23.666 -05:00 [INF] HTTP POST /api/Users responded 409 in 236.7621 ms
+2026-04-06 15:23:05.977 -05:00 [INF] HTTP GET /api/Organizations/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 200 in 30.9118 ms
+2026-04-06 15:24:44.594 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 15:24:45.579 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 15:25:29.632 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 87.0925 ms
+2026-04-06 15:25:29.725 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 1.0778 ms
+2026-04-06 15:25:29.759 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 34.7272 ms
+2026-04-06 15:25:29.759 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 34.7935 ms
+2026-04-06 15:25:29.760 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 35.5573 ms
+2026-04-06 15:25:29.760 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 36.3954 ms
+2026-04-06 15:25:30.157 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.1574 ms
+2026-04-06 15:25:30.157 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 15:25:30.591 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 466.8684 ms
+2026-04-06 15:25:53.650 -05:00 [INF] HTTP GET /api/Users/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 200 in 71.1591 ms
+2026-04-06 15:27:05.821 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 15:27:06.088 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 15:27:07.824 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 68.8102 ms
+2026-04-06 15:27:07.901 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 19.3436 ms
+2026-04-06 15:27:07.902 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 13.0023 ms
+2026-04-06 15:27:07.903 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 20.8903 ms
+2026-04-06 15:27:07.915 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 11.7789 ms
+2026-04-06 15:27:07.919 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.3955 ms
+2026-04-06 15:27:08.455 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 15:27:08.476 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.1640 ms
+2026-04-06 15:27:08.837 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 407.1635 ms
+2026-04-06 15:27:18.645 -05:00 [INF] Successfully persisted organization: string at "2026-04-06T20:27:18.6449266+00:00"
+2026-04-06 15:27:18.648 -05:00 [ERR] Organization validation error occurred, fix the error and try again.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: Organization with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+2026-04-06 15:27:18.728 -05:00 [ERR] HTTP POST /api/Organizations responded 500 in 898.7925 ms
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: Organization with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 33
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-06 15:27:18.780 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: Organization with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 33
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.AddOrganizationAsync(Organization org) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 41
+   at OrganizationsController.PostOrganizationAsync(Organization organization) in C:\DEV\Templates\Template.Api\Controllers\OrganizationController.cs:line 29
+   at lambda_method8(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-06 15:46:10.960 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 15:46:11.598 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 15:46:27.278 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 65.9735 ms
+2026-04-06 15:46:27.338 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.6755 ms
+2026-04-06 15:46:27.356 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 19.1835 ms
+2026-04-06 15:46:27.357 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 19.6014 ms
+2026-04-06 15:46:27.357 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 19.8049 ms
+2026-04-06 15:46:27.375 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 38.2620 ms
+2026-04-06 15:46:27.513 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 15:46:27.544 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.1435 ms
+2026-04-06 15:46:27.787 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 278.0658 ms
+2026-04-06 15:46:33.450 -05:00 [INF] Successfully persisted organization: string at "2026-04-06T20:46:33.4502535+00:00"
+2026-04-06 15:46:33.454 -05:00 [ERR] Organization validation error occurred, fix the error and try again.
+Template.Api.Models.Foundation.Organization.Exceptions.OrganizationValidationException: Organization validation error occurred, fix the error and try again.
+ ---> Template.Api.Models.Foundation.Organization.Exceptions.AlreadyExistsOrganizationException: Organization with Id '3fa85f64-5717-4562-b3fc-2c963f66afa6' already exists.
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateOrganizationDoesNotAlreadyExistAsync(Organization organization) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 53
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass3_0.<<AddOrganizationAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 46
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+2026-04-06 15:46:33.500 -05:00 [INF] HTTP POST /api/Organizations responded 409 in 681.8429 ms
+2026-04-06 15:50:05.229 -05:00 [INF] Serilog is now targeting the console!
+2026-04-06 15:50:05.443 -05:00 [INF] Checking DB Connectivity...
+2026-04-06 15:50:30.797 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 64.0064 ms
+2026-04-06 15:50:30.848 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.7897 ms
+2026-04-06 15:50:30.882 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 35.0300 ms
+2026-04-06 15:50:30.882 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 35.0676 ms
+2026-04-06 15:50:30.882 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 35.1707 ms
+2026-04-06 15:50:30.884 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 36.8856 ms
+2026-04-06 15:50:31.148 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-06 15:50:31.151 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.2749 ms
+2026-04-06 15:50:31.400 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 263.7083 ms

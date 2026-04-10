@@ -1,6 +1,7 @@
 using Template.Api.Models.Foundation.User;
 using Microsoft.EntityFrameworkCore;
 using Template.Api.Brokers.Logging;
+using Template.Api.Brokers.Security;
 
 namespace Template.Api.Services.Foundations.Users;
 
@@ -12,18 +13,22 @@ public partial class UserService : IUserService
 {
     private readonly IStorageBroker storageBroker;
     private readonly ILoggingBroker loggingBroker;
+    private readonly ISecurityBroker securityBroker;
 
     /// <summary>
     /// Injecting and setting the storage broker.
     /// </summary>
     /// <param name="storageBroker"></param>
     /// <param name="loggingBroker"></param>
+    /// <param name="securityBroker"></param>
     public UserService(
         IStorageBroker storageBroker,
-        ILoggingBroker loggingBroker)
+        ILoggingBroker loggingBroker,
+        ISecurityBroker securityBroker)
     {
         this.storageBroker = storageBroker;
         this.loggingBroker = loggingBroker;
+        this.securityBroker = securityBroker;
     }
 
     /// <summary>
@@ -39,6 +44,8 @@ public partial class UserService : IUserService
             ValidateUserOnAdd(user);
             await ValidateUserDoesNotAlreadyExistAsync(user);
 
+            user.PasswordHash = this.securityBroker.HashPassword(user.PasswordHash);
+
             return await this.storageBroker.InsertUserAsync(user);
         }))!;
     }
@@ -52,10 +59,18 @@ public partial class UserService : IUserService
     public ValueTask<User?> RetrieveUserByIdAsync(Guid userId) =>
     TryCatch(async () =>
     {
-        IQueryable<User?> users =
-            this.storageBroker.SelectAllUsers();
+        return await this.storageBroker.SelectUserByIdAsync(userId);
+    });
 
-        return await users.FirstOrDefaultAsync(user => user!.Id == userId);
+    /// <summary>
+    /// Retrieves a specific user by email address.
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns></returns>
+    public ValueTask<User?> RetrieveUserByEmailAsync(string email) =>
+    TryCatch(async () =>
+    {
+        return await this.storageBroker.SelectUserByEmailAsync(email);
     });
 
     /// <summary>

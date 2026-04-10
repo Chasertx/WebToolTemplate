@@ -1,6 +1,8 @@
 using System.Text;
+using System.IO.Compression;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
@@ -9,6 +11,7 @@ using Template.Api.Services.Foundations.Organizations;
 using Template.Api.Services.Foundations.Users;
 using Serilog;
 using Template.Api.Brokers.Logging;
+using Template.Api.Brokers.Security;
 
 //Initializing the web application builder.
 var builder = WebApplication.CreateBuilder(args);
@@ -48,9 +51,10 @@ builder.Services.AddOpenApi(options =>
 });
 
 //Mapping storage interface to implementation.
-builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+builder.Services.AddScoped<IStorageBroker, StorageBroker>();
 builder.Services.AddTransient<IOrganizationService, OrganizationService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ISecurityBroker, SecurityBroker>();
 
 //Initializing JWT Authentication service.
 builder.Services.AddAuthentication("Bearer")
@@ -61,9 +65,10 @@ builder.Services.AddAuthentication("Bearer")
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "MyApi",
-            ValidAudience = "MyUsers",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourVerySecretKey123!"))
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
         };
     });
 
@@ -73,6 +78,24 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
 });
+
+//Registering response compression with Brotli and Gzip.
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+//Brotli already compresses better than Gzip, so Fastest
+//still yields good compression with minimal CPU cost.
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+    options.Level = CompressionLevel.Fastest);
+
+//Gzip is a fallback for older clients that don't support
+//Brotli, so we prioritize max compression here.
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+    options.Level = CompressionLevel.SmallestSize);
 
 //Constructing instance of the application.
 var app = builder.Build();
@@ -98,6 +121,8 @@ using (var scope = app.Services.CreateScope())
     app.Logger.LogInformation("Checking DB Connectivity...");
     broker?.Database.Migrate();
 }
+//Compresses response bodies using Brotli/Gzip.
+app.UseResponseCompression();
 //Redirects requests to https.
 app.UseHttpsRedirection();
 //Enabling identity identification middleware.

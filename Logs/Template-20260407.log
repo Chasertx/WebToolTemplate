@@ -1,0 +1,16 @@
+2026-04-07 05:56:35.081 -05:00 [INF] Serilog is now targeting the console!
+2026-04-07 05:56:35.821 -05:00 [INF] Checking DB Connectivity...
+2026-04-07 06:13:26.030 -05:00 [INF] Serilog is now targeting the console!
+2026-04-07 06:13:26.757 -05:00 [INF] Checking DB Connectivity...
+2026-04-07 06:13:34.609 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 61.1364 ms
+2026-04-07 06:13:34.685 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 9.0611 ms
+2026-04-07 06:13:34.703 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 29.0490 ms
+2026-04-07 06:13:34.703 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 5.6045 ms
+2026-04-07 06:13:34.704 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 28.8020 ms
+2026-04-07 06:13:34.707 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 32.4637 ms
+2026-04-07 06:13:35.029 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-07 06:13:35.056 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.2480 ms
+2026-04-07 06:13:35.757 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 736.7880 ms
+2026-04-07 06:13:49.639 -05:00 [INF] Successfully validated user: string at "2026-04-07T11:13:49.6391468+00:00"
+2026-04-07 06:13:50.799 -05:00 [INF] Successfully persisted user: string at "2026-04-07T11:13:50.7989683+00:00"
+2026-04-07 06:13:50.830 -05:00 [INF] HTTP POST /api/Users responded 201 in 1318.2906 ms
