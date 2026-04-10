@@ -49,7 +49,7 @@ builder.Services.AddOpenApi(options =>
 });
 
 //Mapping storage interface to implementation.
-builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+builder.Services.AddScoped<IStorageBroker, StorageBroker>();
 builder.Services.AddTransient<IOrganizationService, OrganizationService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ISecurityBroker, SecurityBroker>();
@@ -63,9 +63,10 @@ builder.Services.AddAuthentication("Bearer")
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "MyApi",
-            ValidAudience = "MyUsers",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourVerySecretKey123!"))
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
         };
     });
 
