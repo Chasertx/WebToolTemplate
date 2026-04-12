@@ -14,7 +14,9 @@ namespace Template.Api.Services.Foundations.Organizations;
 /// </summary>
 public partial class OrganizationService
 {
-    // High-level validation entry point
+    // -------------------------------------------------------------------------
+    // Entry Points
+    // -------------------------------------------------------------------------
     private void ValidateOrganizationOnAdd(Organization organization)
     {
         // null check.
@@ -30,16 +32,36 @@ public partial class OrganizationService
         );
     }
 
-    /// <summary>
-    /// Checks if the object exists.
-    /// </summary>
-    /// <param name="organization"></param>
-    /// <exception cref="NullOrganizationException"></exception>
-    private static void ValidateOrganizationIsNotNull(Organization organization)
+    private void ValidateOrganizationOnModify(Organization organization)
     {
-        if (organization is null)
+        ValidateOrganizationIsNotNull(organization);
+
+        Validate(
+            (Rule: IsInvalid(organization.Id), Parameter: nameof(Organization.Id)),
+            (Rule: IsInvalid(organization.Name), Parameter: nameof(Organization.Name)),
+            (Rule: IsInvalid(organization.Status), Parameter: nameof(Organization.Status))
+        );
+    }
+
+    private static void ValidateOrganizationId(Guid organizationId) =>
+       Validate(
+           (Rule: IsInvalid(organizationId), Parameter: nameof(Organization.Id))
+       );
+
+    /// <summary>
+    /// Checks if organization id exists in
+    /// the db.
+    /// </summary>
+    /// <param name="org"></param>
+    /// <param name="id"></param>
+    /// <exception cref="KeyNotFoundException"></exception>
+    private void ValidateStorageOrganizationExists(Organization? org, Guid id)
+    {
+        if (org is null)
         {
-            throw new NullOrganizationException();
+            throw new KeyNotFoundException(
+                $"Could not find organization with id: {id}"
+            );
         }
     }
 
@@ -53,6 +75,25 @@ public partial class OrganizationService
             throw new AlreadyExistsOrganizationException(organization.Id);
         }
     }
+
+    // -------------------------------------------------------------------------
+    // Guards
+    // -------------------------------------------------------------------------
+
+    /// <summary>
+    /// Throws <see cref="NullOrganizationException"/> if the object is null.
+    /// </summary>
+    private static void ValidateOrganizationIsNotNull(Organization organization)
+    {
+        if (organization is null)
+        {
+            throw new NullOrganizationException();
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Rules
+    // -------------------------------------------------------------------------
 
     /// <summary>
     /// Rule: Id must not be null.
@@ -95,7 +136,7 @@ public partial class OrganizationService
                     value: rule.Message);
             }
 
-            invalidOrganizationException.ThrowIfContainsErrors();
         }
+        invalidOrganizationException.ThrowIfContainsErrors();
     }
 }

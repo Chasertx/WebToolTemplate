@@ -40,5 +40,29 @@ namespace Template.Api.Brokers.Foundation.Storages
             // type as a queryable.
             return Set<T>();
         }
+
+        // '@object' is the instance of T being updated.
+        // the @ prefix allows 'object' to be used as a
+        // variable name.
+        private async ValueTask<T> UpdateAsync<T>(T @object)
+        {
+            // 'default!' returns the default value of T
+            if (@object is null) return default!;
+            // 'Entry(@object) retrieves the EF core tracking entry
+            // for this specific object.
+            // EntityState.Modified = treat all fields as modified.
+            Entry(@object).State = EntityState.Modified;
+            //persists changes to database.
+            await SaveChangesAsync();
+            return @object;
+        }
+
+        private async ValueTask<T> DeleteAsync<T>(T @object)
+        {
+            if (@object is null) return default!;
+            Entry(@object).State = EntityState.Deleted;
+            await SaveChangesAsync();
+            return @object;
+        }
     }
 }
