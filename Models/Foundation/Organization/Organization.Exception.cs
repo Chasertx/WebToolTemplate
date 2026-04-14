@@ -91,7 +91,7 @@ public class InvalidOrganizationException : OrganizationException
 /// <summary>
 /// Catches 500 errors.
 /// </summary>
-public class OrganizationServiceException : Exception
+public class OrganizationServiceException : OrganizationException
 {
     public OrganizationServiceException(Exception innerException)
         : base(message: "Organization service error occurred, contact support.",
@@ -102,7 +102,7 @@ public class OrganizationServiceException : Exception
 /// <summary>
 /// For depenency errors.
 /// </summary>
-public class OrganizationDependencyException : Exception
+public class OrganizationDependencyException : OrganizationException
 {
     public OrganizationDependencyException(Exception innerException)
         : base(message: "Organization dependency exception, contact support.",
@@ -113,7 +113,7 @@ public class OrganizationDependencyException : Exception
 /// <summary>
 /// 
 /// </summary>
-public class FailedOrganizationStorageException : Exception
+public class FailedOrganizationStorageException : OrganizationException
 {
     public FailedOrganizationStorageException(Exception innerException)
         : base(message: "Failed to write to database.",

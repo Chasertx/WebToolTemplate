@@ -1,0 +1,16 @@
+2026-04-11 07:49:17.435 -05:00 [INF] Serilog is now targeting the console!
+2026-04-11 07:49:18.304 -05:00 [INF] Checking DB Connectivity...
+2026-04-11 07:49:23.061 -05:00 [ERR] An error occurred using the connection to database 'postgres' on server 'tcp://localhost:5432'.
+2026-04-11 07:51:34.544 -05:00 [INF] Serilog is now targeting the console!
+2026-04-11 07:51:34.916 -05:00 [INF] Checking DB Connectivity...
+2026-04-11 07:52:09.294 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 105.1224 ms
+2026-04-11 07:52:09.350 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.8607 ms
+2026-04-11 07:52:09.372 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 22.3064 ms
+2026-04-11 07:52:09.372 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 22.2735 ms
+2026-04-11 07:52:09.372 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 12.7236 ms
+2026-04-11 07:52:09.380 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 30.4192 ms
+2026-04-11 07:52:09.695 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-11 07:52:09.952 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 267.2265 ms
+2026-04-11 08:57:16.457 -05:00 [INF] Serilog is now targeting the console!
+2026-04-11 08:57:17.162 -05:00 [INF] Checking DB Connectivity...
+2026-04-11 08:57:32.790 -05:00 [ERR] An error occurred using the connection to database 'postgres' on server 'tcp://localhost:5432'.

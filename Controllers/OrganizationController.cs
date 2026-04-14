@@ -5,7 +5,7 @@ using Template.Api.Services.Foundations.Organizations;
 
 [ApiController]
 [Route("api/[controller]")]
-public class OrganizationsController : ControllerBase
+public partial class OrganizationsController : ControllerBase
 {
     //Variable for holding the organizationService
     private readonly IOrganizationService organizationService;
@@ -40,6 +40,7 @@ public class OrganizationsController : ControllerBase
         }
     }
 
+
     /// <summary>
     /// Gets a list of all organizations in the organization
     /// table.
@@ -64,5 +65,39 @@ public class OrganizationsController : ControllerBase
     public ActionResult<Organization> GetOrganizationById(Guid id)
     {
         return Ok();
+    }
+
+    /// <summary>
+    /// Deletes the organization with the 
+    /// specified id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpDelete("{id}")]
+    public ActionResult<Organization> RemoveOrganizationById(Guid id)
+    {
+        return Ok(this.organizationService.RemoveOrganizationByIdAsync(id));
+    }
+
+    /// <summary>
+    /// PUT api/organization endpoint for updating
+    /// and organization.
+    /// </summary>
+    /// <param name="org"></param>
+    /// <returns></returns>
+    [HttpPut]
+    public async ValueTask<ActionResult<Organization>> PutOrganizationAsync(Organization org)
+    {
+        try
+        {
+            Organization modifiedOrganization =
+                await this.organizationService.ModifyOrganizationAsync(org);
+
+            return Ok(modifiedOrganization);
+        }
+        catch (OrganizationException organizationException)
+        {
+            return BadRequest(organizationException);
+        }
     }
 }

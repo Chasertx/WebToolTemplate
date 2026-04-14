@@ -71,4 +71,44 @@ public partial class OrganizationService : IOrganizationService
     {
         return this.storageBroker.SelectAllOrganizations();
     });
+
+    /// <summary>
+    /// Modify specified organization.
+    /// </summary>
+    /// <param name="org"></param>
+    /// <returns></returns>
+    public async ValueTask<Organization> ModifyOrganizationAsync(Organization org)
+    {
+        return (await TryCatch(async () =>
+        {
+            ValidateOrganizationOnModify(org);
+
+            Organization? maybeOrganization =
+                await this.storageBroker.SelectOrganizationByIdAsync(org.Id);
+
+            ValidateStorageOrganizationExists(maybeOrganization, org.Id);
+
+            return await this.storageBroker.UpdateOrganizationAsync(org);
+        }))!;
+    }
+
+    /// <summary>
+    /// Remove organization according to Id.
+    /// </summary>
+    /// <param name="orgId"></param>
+    /// <returns></returns>
+    public async ValueTask<Organization> RemoveOrganizationByIdAsync(Guid orgId)
+    {
+        return (await TryCatch(async () =>
+        {
+            ValidateOrganizationId(orgId);
+
+            Organization? maybeOrganization =
+                await this.storageBroker.SelectOrganizationByIdAsync(orgId);
+
+            ValidateStorageOrganizationExists(maybeOrganization, orgId);
+
+            return await this.storageBroker.DeleteOrganizationAsync(maybeOrganization!);
+        }))!;
+    }
 }

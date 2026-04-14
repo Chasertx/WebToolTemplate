@@ -1,0 +1,165 @@
+2026-04-12 06:10:55.669 -05:00 [INF] Serilog is now targeting the console!
+2026-04-12 06:10:56.413 -05:00 [INF] Checking DB Connectivity...
+2026-04-12 06:11:01.083 -05:00 [ERR] An error occurred using the connection to database 'postgres' on server 'tcp://localhost:5432'.
+2026-04-12 06:14:01.893 -05:00 [INF] Serilog is now targeting the console!
+2026-04-12 06:14:02.189 -05:00 [INF] Checking DB Connectivity...
+2026-04-12 06:14:07.145 -05:00 [ERR] An error occurred using the connection to database 'postgres' on server 'tcp://localhost:5432'.
+2026-04-12 06:14:27.950 -05:00 [INF] Serilog is now targeting the console!
+2026-04-12 06:14:28.373 -05:00 [INF] Checking DB Connectivity...
+2026-04-12 06:14:40.043 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 61.4630 ms
+2026-04-12 06:14:40.167 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 19.4175 ms
+2026-04-12 06:14:40.186 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.4555 ms
+2026-04-12 06:14:40.211 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 21.0835 ms
+2026-04-12 06:14:40.212 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 32.6827 ms
+2026-04-12 06:14:40.225 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 18.0178 ms
+2026-04-12 06:14:40.386 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-12 06:14:40.407 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.3095 ms
+2026-04-12 06:14:40.693 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 315.9574 ms
+2026-04-12 06:14:56.666 -05:00 [INF] HTTP DELETE /api/Organizations/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 200 in 783.6358 ms
+2026-04-12 06:21:35.998 -05:00 [INF] Serilog is now targeting the console!
+2026-04-12 06:21:36.249 -05:00 [INF] Checking DB Connectivity...
+2026-04-12 06:21:43.001 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-12 06:21:43.567 -05:00 [ERR] HTTP DELETE /api/Organizations/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 500 in 573.2828 ms
+System.Collections.Generic.KeyNotFoundException: Could not find organization with id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateStorageOrganizationExists(Organization org, Guid id) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 62
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.RemoveOrganizationByIdAsync(Guid orgId) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 108
+   at ResultGetter(Object)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-12 06:21:43.615 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Collections.Generic.KeyNotFoundException: Could not find organization with id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateStorageOrganizationExists(Organization org, Guid id) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 62
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.RemoveOrganizationByIdAsync(Guid orgId) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 108
+   at ResultGetter(Object)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-12 06:22:00.476 -05:00 [INF] Successfully persisted organization:  at "2026-04-12T11:22:00.4759813+00:00"
+2026-04-12 06:22:00.653 -05:00 [INF] Successfully persisted organization: string at "2026-04-12T11:22:00.6539279+00:00"
+2026-04-12 06:22:00.708 -05:00 [INF] HTTP POST /api/Organizations responded 201 in 379.2324 ms
+2026-04-12 06:22:05.341 -05:00 [INF] HTTP DELETE /api/Organizations/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 200 in 34.0977 ms
+2026-04-12 06:24:22.339 -05:00 [INF] Serilog is now targeting the console!
+2026-04-12 06:24:23.081 -05:00 [INF] Checking DB Connectivity...
+2026-04-12 06:24:34.019 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 64.9731 ms
+2026-04-12 06:24:34.077 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.3598 ms
+2026-04-12 06:24:34.091 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 15.8123 ms
+2026-04-12 06:24:34.091 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 15.1780 ms
+2026-04-12 06:24:34.092 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 32.7862 ms
+2026-04-12 06:24:34.102 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 25.4344 ms
+2026-04-12 06:24:34.236 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.1541 ms
+2026-04-12 06:24:34.240 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-12 06:24:34.521 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 292.8910 ms
+2026-04-12 06:24:43.510 -05:00 [INF] Successfully persisted organization:  at "2026-04-12T11:24:43.5075174+00:00"
+2026-04-12 06:24:43.789 -05:00 [INF] Successfully persisted organization: string at "2026-04-12T11:24:43.7892265+00:00"
+2026-04-12 06:24:43.824 -05:00 [INF] HTTP POST /api/Organizations responded 201 in 889.6135 ms
+2026-04-12 06:24:55.418 -05:00 [INF] Successfully persisted organization: string at "2026-04-12T11:24:55.4184169+00:00"
+2026-04-12 06:24:55.423 -05:00 [INF] HTTP DELETE /api/Organizations/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 200 in 108.1267 ms
+2026-04-12 06:25:00.412 -05:00 [ERR] Could not find organization with id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+System.Collections.Generic.KeyNotFoundException: Could not find organization with id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateStorageOrganizationExists(Organization org, Guid id) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 62
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass7_0.<<RemoveOrganizationByIdAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 109
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+2026-04-12 06:25:00.447 -05:00 [ERR] HTTP DELETE /api/Organizations/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 500 in 57.6503 ms
+System.Exception: Service error occurred.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find organization with id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateStorageOrganizationExists(Organization org, Guid id) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 62
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass7_0.<<RemoveOrganizationByIdAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 109
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 50
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.RemoveOrganizationByIdAsync(Guid orgId) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 102
+   at ResultGetter(Object)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-12 06:25:00.514 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: Service error occurred.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find organization with id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.ValidateStorageOrganizationExists(Organization org, Guid id) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.Validation.cs:line 62
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.<>c__DisplayClass7_0.<<RemoveOrganizationByIdAsync>b__0>d.MoveNext() in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 109
+--- End of stack trace from previous location ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 20
+   --- End of inner exception stack trace ---
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.TryCatch(ReturningOrgnizationFunction returningOrganizationFunction) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrgnizationService.Exceptions.cs:line 50
+   at Template.Api.Services.Foundations.Organizations.OrganizationService.RemoveOrganizationByIdAsync(Guid orgId) in C:\DEV\Templates\Template.Api\Services\Foundations\Organizations\OrganizationService.cs:line 102
+   at ResultGetter(Object)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
