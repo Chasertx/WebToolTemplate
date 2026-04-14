@@ -1,0 +1,38 @@
+2026-04-14 10:04:32.489 -05:00 [INF] Serilog is now targeting the console!
+2026-04-14 10:04:33.182 -05:00 [INF] Checking DB Connectivity...
+2026-04-14 10:04:37.774 -05:00 [ERR] An error occurred using the connection to database 'postgres' on server 'tcp://localhost:5432'.
+2026-04-14 10:06:49.893 -05:00 [INF] Serilog is now targeting the console!
+2026-04-14 10:06:50.116 -05:00 [INF] Checking DB Connectivity...
+2026-04-14 10:07:15.778 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 75.9525 ms
+2026-04-14 10:07:15.836 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 1.1285 ms
+2026-04-14 10:07:15.867 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 29.8236 ms
+2026-04-14 10:07:15.867 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 31.1842 ms
+2026-04-14 10:07:15.867 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 32.3475 ms
+2026-04-14 10:07:15.867 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 30.2727 ms
+2026-04-14 10:07:16.254 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-14 10:07:16.581 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 349.9303 ms
+2026-04-14 10:07:37.557 -05:00 [INF] HTTP POST /api/Organizations responded 400 in 89.3397 ms
+2026-04-14 10:10:35.243 -05:00 [INF] Serilog is now targeting the console!
+2026-04-14 10:10:35.920 -05:00 [INF] Checking DB Connectivity...
+2026-04-14 10:10:45.071 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 62.3919 ms
+2026-04-14 10:10:45.160 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 18.1161 ms
+2026-04-14 10:10:45.160 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 18.1985 ms
+2026-04-14 10:10:45.160 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 18.1150 ms
+2026-04-14 10:10:45.167 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.2641 ms
+2026-04-14 10:10:45.167 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 25.3450 ms
+2026-04-14 10:10:45.282 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.2556 ms
+2026-04-14 10:10:45.286 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-14 10:10:45.538 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 266.9317 ms
+2026-04-14 10:10:59.846 -05:00 [INF] HTTP POST /api/Organizations responded 400 in 78.3367 ms
+2026-04-14 10:13:03.461 -05:00 [INF] Serilog is now targeting the console!
+2026-04-14 10:13:03.631 -05:00 [INF] Checking DB Connectivity...
+2026-04-14 10:22:19.078 -05:00 [INF] HTTP GET /swagger/index.html responded 304 in 63.3538 ms
+2026-04-14 10:22:19.115 -05:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.6755 ms
+2026-04-14 10:22:19.157 -05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 42.6103 ms
+2026-04-14 10:22:19.157 -05:00 [INF] HTTP GET /swagger/index.css responded 304 in 42.7356 ms
+2026-04-14 10:22:19.157 -05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 42.6517 ms
+2026-04-14 10:22:19.157 -05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 43.1022 ms
+2026-04-14 10:22:19.404 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.9545 ms
+2026-04-14 10:22:19.402 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-14 10:22:19.615 -05:00 [INF] HTTP GET /openapi/v1.json responded 200 in 220.2431 ms
+2026-04-14 10:22:47.708 -05:00 [INF] HTTP POST /api/Organizations responded 400 in 154.0613 ms
