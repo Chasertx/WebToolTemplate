@@ -12,6 +12,9 @@ using Template.Api.Services.Foundations.Users;
 using Serilog;
 using Template.Api.Brokers.Logging;
 using Template.Api.Brokers.Security;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Template.Api.Validators;
 
 //Initializing the web application builder.
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +36,11 @@ builder.Services.AddDbContext<StorageBroker>(options =>
 builder.Services.AddControllers();
 //Registering api explorer for documentation.
 builder.Services.AddEndpointsApiExplorer();
+
+//Fluent validation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<OrganizationValidator>();
+
 //Register OpenApi generation.
 builder.Services.AddOpenApi(options =>
 {
